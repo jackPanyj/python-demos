@@ -1,7 +1,9 @@
+#!/usr/bin/env python
+# -*-coding:utf-8-*-
+
+# 第 0002 题：将 0001 题生成的 200 个激活码（或者优惠券）保存到 MySQL 关系型数据库中。
+
 import sqlite3
-
-
-# 将 0001 题生成的 200 个激活码（或者优惠券）保存到 MySQL 关系型数据库中。
 
 conn = sqlite3.connect('test.db')
 
@@ -9,29 +11,35 @@ cursor = conn.cursor()
 
 def create_table():
 
-	cursor.execute('create table if not exists code ( id INTEGER PRIMARY KEY AUTOINCREMENT, random_code varchar(10))')
+    cursor.execute('create table if not exists code ( id INTEGER PRIMARY KEY AUTOINCREMENT, random_code varchar(10))')
 
-	conn.commit()
+    conn.commit()
 
 
 
 def save_to_sqlite():
 
-	f = open('../0001/code.txt', 'r')
+    f = open('../0001/code.txt', 'r')
 
-	for line in f.readlines():
+    s = ''
 
-		cursor.execute('insert into code (random_code) values (?)', (line,))
+    #拼接sql
 
-	conn.commit()
+    for line in f.readlines():
+
+        s = s + "('{0}'),".format(line)
+
+    cursor.execute('insert into code (random_code) values' + s.rstrip(',')) 
+
+    conn.commit()
 
 
 if __name__ == '__main__':
 
-	create_table()
+    create_table()
 
-	save_to_sqlite()
+    save_to_sqlite()
 
-	cursor.close()
+    cursor.close()
 
-	conn.close()
+    conn.close()
