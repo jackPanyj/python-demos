@@ -8,10 +8,10 @@ def random_code():
 	codes = list()
 	for i in range(200):
 		# 避免出现伪随机数重复
-		while true:
+		while True:
 			code = str(uuid.uuid4())[0:8]
 			if code not in codes:
-				continue
+				break
 		codes.append(code)
 	# 使用with语法自动处理，写入完成自动关闭文件
 	with open('./code.txt', 'w') as f:
