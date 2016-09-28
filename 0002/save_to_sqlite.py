@@ -28,6 +28,8 @@ def save_to_sqlite():
     for line in f.readlines():
 
         s = s + "('{0}'),".format(line)
+        
+    f.close()
 
     cursor.execute('insert into code (random_code) values' + s.rstrip(',')) 
 
