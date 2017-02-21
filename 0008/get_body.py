@@ -9,8 +9,8 @@ def get_body_and_href():
     os.system('curl -o baidu.html www.baidu.com')
     with open('baidu.html') as f:
         soup = BeautifulSoup(f, 'html.parser')
-        print soup
-        print soup.find_all('a')
+        print(soup)
+        print(soup.find_all('a'))
 
 if __name__ == '__main__':
     get_body_and_href()

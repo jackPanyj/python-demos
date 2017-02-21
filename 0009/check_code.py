@@ -1,0 +1,1 @@
+#!/usr/bin/env python# -*-coding:utf-8-*-import stringimport randomfrom PIL import Image, ImageDraw, ImageFilterdef gen_letters(num=4):    img = Image.new('RGB', size=[400, 200], color=(255, 255, 255))    return random.sample(string.ascii_letters, num)if __name__ == '__main__':    print(gen_letters(num=4))
