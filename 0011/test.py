@@ -5,9 +5,7 @@ import tinify
 import glob
 import os
 
-''' 利用tinypng的api对指定的目录进行图片的压缩 '''
-
-KEY = 'APP_KEY'
+KEY = 'X_71ahBkGDGba6pMjdrzd_vCpprF1Oy3'
 
 def minImg(src_dir, des_dir):
     ''' 将路径转换为绝对路径 '''
